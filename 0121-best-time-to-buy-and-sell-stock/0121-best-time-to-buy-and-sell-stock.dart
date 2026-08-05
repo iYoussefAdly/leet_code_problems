@@ -4,16 +4,15 @@ class Solution {
     int maxProfit = 0;
 
     for (int i = 1; i < prices.length; i++) {
+      // Update the minimum price seen so far
       if (prices[i] < minPrice) {
         minPrice = prices[i];
       } else {
+        // Profit if we sell today
         int profit = prices[i] - minPrice;
-        if (profit > maxProfit) {
-          maxProfit = profit;
-        }
+        if (profit > maxProfit) maxProfit = profit;
       }
     }
-
     return maxProfit;
   }
 }
