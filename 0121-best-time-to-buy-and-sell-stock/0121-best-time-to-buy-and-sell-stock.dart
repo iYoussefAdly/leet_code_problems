@@ -1,16 +1,16 @@
 class Solution {
   int maxProfit(List<int> prices) {
-    int minPrice = prices[0];
+    int lowest = prices[0];
     int maxProfit = 0;
-
     for (int i = 1; i < prices.length; i++) {
-      // Update the minimum price seen so far
-      if (prices[i] < minPrice) {
-        minPrice = prices[i];
+      var currentProfit = 0;
+      if (prices[i] < lowest) {
+        lowest = prices[i];
       } else {
-        // Profit if we sell today
-        int profit = prices[i] - minPrice;
-        if (profit > maxProfit) maxProfit = profit;
+        currentProfit = prices[i] - lowest;
+        if (currentProfit > maxProfit) {
+          maxProfit = currentProfit;
+        }
       }
     }
     return maxProfit;
