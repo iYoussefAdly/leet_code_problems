@@ -1,12 +1,15 @@
 class Solution {
   bool isPalindrome(String s) {
-    String lowerCaseString = s.toLowerCase();
-    String finalCheckString =
-        lowerCaseString.replaceAll(RegExp(r'[^a-zA-Z0-9]'), "");
-    if (finalCheckString == finalCheckString.split("").reversed.join()) {
-      return true;
-    } else {
-      return false;
+    String cleanS = s.toLowerCase().replaceAll(RegExp(r'[^A-Za-z0-9]'), "");
+    int low = 0;
+    int high = cleanS.length - 1;
+    while (low < high) {
+      if (cleanS[low] != cleanS[high]) {
+        return false;
+      }
+      low++;
+      high--;
     }
+    return true;
   }
 }
