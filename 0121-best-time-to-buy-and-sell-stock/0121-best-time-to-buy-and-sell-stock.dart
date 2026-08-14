@@ -1,18 +1,19 @@
 class Solution {
   int maxProfit(List<int> prices) {
-    int maxProfit = 0;
     int lowest = prices[0];
-    for (int i = 0; i < prices.length; i++) {
-      int currentProfit = 0;
+    int maxProfitValue = 0;
+    for (int i = 1; i < prices.length; i++) {
+      int profit = 0;
       if (prices[i] < lowest) {
         lowest = prices[i];
+        continue;
       } else {
-        currentProfit = prices[i] - lowest;
-        if (currentProfit > maxProfit) {
-          maxProfit = currentProfit;
+        profit = prices[i] - lowest;
+        if (profit > maxProfitValue) {
+          maxProfitValue = profit;
         }
       }
     }
-    return maxProfit;
+    return maxProfitValue;
   }
 }
